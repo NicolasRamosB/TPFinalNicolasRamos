@@ -18,6 +18,7 @@ namespace SWProvincias_Ramos.Controllers
         this.context = context;
         }
 
+        
         [HttpGet]
         public ActionResult<IEnumerable<Ciudad>> Get()
         {
@@ -25,7 +26,7 @@ namespace SWProvincias_Ramos.Controllers
         }
 
 
-        //Get By Autor
+        
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Ciudad>> Get(int id)
         {
@@ -38,7 +39,7 @@ namespace SWProvincias_Ramos.Controllers
 
         }
 
-        //Post
+        
         [HttpPost]
         public ActionResult Post(Ciudad ciudad)
         {
@@ -52,7 +53,6 @@ namespace SWProvincias_Ramos.Controllers
         }
 
 
-        //Put
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Ciudad ciudad)
         {

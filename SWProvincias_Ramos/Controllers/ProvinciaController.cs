@@ -25,7 +25,7 @@ namespace SWProvincias_Ramos.Controllers
         }
 
 
-        //Get By Autor
+        
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Provincia>> Get(int id)
         {
@@ -38,7 +38,7 @@ namespace SWProvincias_Ramos.Controllers
 
         }
 
-        //Post
+       
         [HttpPost]
         public ActionResult Post(Provincia provincia)
         {
@@ -52,7 +52,7 @@ namespace SWProvincias_Ramos.Controllers
         }
 
 
-        //Put
+        
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Provincia provincia)
         {
