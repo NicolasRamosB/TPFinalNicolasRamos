@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SWAdventureWorks_Ramos.Models;
 
 namespace SWAdventureWorks_Ramos.Controllers
@@ -31,9 +32,7 @@ namespace SWAdventureWorks_Ramos.Controllers
             CreditCard creditCard = (from c in context.CreditCard
                                      where c.CreditCardId == id
                                      select c).SingleOrDefault();
-
             return creditCard;
-
         }
 
         [HttpGet("listado/{type}")]
@@ -55,6 +54,37 @@ namespace SWAdventureWorks_Ramos.Controllers
             context.CreditCard.Add(creditCard);
             context.SaveChanges();
             return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, [FromBody] CreditCard creditCard)
+        {
+            if (id != creditCard.CreditCardId)
+            {
+                return BadRequest();
+            }
+            context.Entry(creditCard).State = EntityState.Modified;
+            context.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<CreditCard> Delete(int id)
+        {
+            var creditCard = (from a in context.CreditCard
+                          where a.CreditCardId == id
+                          select a).SingleOrDefault();
+            if (creditCard == null)
+            {
+
+                return NotFound();
+
+            }
+            context.CreditCard.Remove(creditCard);
+            context.SaveChanges();
+            return creditCard;
+
         }
     }
 }

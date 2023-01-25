@@ -64,7 +64,7 @@ namespace SWProvincias_Ramos.Controllers
             context.Entry(provincia).State = EntityState.Modified;
             context.SaveChanges();
 
-            return NoContent();
+            return Ok();
 
         }
 
